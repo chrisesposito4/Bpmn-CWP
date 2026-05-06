@@ -1,0 +1,53 @@
+{
+  "name": "parent",
+  "version": "1.2.7",
+  "description": "Open BPMN 2.0",
+  "homepage": "https://www.imixs.org/",
+  "bugs": "https://github.com/imixs/open-bpmn/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/imixs/open-bpmn.git"
+  },
+  "license": "EPL-2.0",
+  "author": {
+    "name": "Imixs Workflow"
+  },
+  "contributors": [
+    {
+      "name": "Ralph Soika",
+      "email": "ralph.soika@imixs.com"
+    }
+  ],
+  "private": true,
+  "workspaces": [
+    "open-bpmn-model",
+    "open-bpmn-properties",
+    "open-bpmn-glsp",
+    "open-bpmn-theia",
+    "open-bpmn-app"
+  ],
+  "scripts": {
+    "all": "yarn install && yarn lint",
+    "browser": " yarn --cwd open-bpmn-app",
+    "build": "lerna run build",
+    "clean": "lerna run clean",
+    "lint": "lerna run lint",
+    "lint:ci": "lerna run lint:ci",
+    "prepare": "lerna run prepare",
+    "rebuild:browser": "theia rebuild:browser",
+    "start": "yarn browser start",
+    "start:external": "yarn browser start:external",
+    "watch": "lerna run --parallel watch"
+  },
+  "devDependencies": {
+    "@eclipse-glsp/config": "2.4.0",
+    "@types/node": "18.x",
+    "concurrently": "^8.2.2",
+    "lerna": "^8.1.7",
+    "typescript": "^5.5.3"
+  },
+  "engines": {
+    "node": ">=18",
+    "yarn": ">=1.7.0 <2"
+  }
+}

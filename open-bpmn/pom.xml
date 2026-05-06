@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.imixs.bpmn</groupId>
+	<artifactId>open-bpmn</artifactId>
+	<version>1.2.7-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<name>Open BPMN</name>
+	<description>The Open BPMN Modeling Platform</description>
+
+	<modules>
+		<module>open-bpmn.metamodel</module>
+		<module>open-bpmn.glsp-server</module>
+	</modules>
+
+	<organization>
+		<name>Imixs Software Solutions GmbH</name>
+		<url>http://www.imixs.com</url>
+	</organization>
+	<inceptionYear>2006</inceptionYear>
+	<developers>
+		<developer>
+			<id>rsoika</id>
+			<name>Ralph Soika</name>
+			<email>ralph.soika@imixs.com</email>
+			<url>http://blog.imixs.org/</url>
+			<organization>Imixs Software Solutions GmbH</organization>
+			<organizationUrl>http://www.imixs.com</organizationUrl>
+			<roles>
+				<role>developer</role>
+				<role>testing</role>
+			</roles>
+			<timezone>2</timezone>
+		</developer>
+		<developer>
+			<id>gaheinle</id>
+			<name>Gaby Heinle</name>
+			<email />
+			<url />
+			<organization>Imixs Software Solutions GmbH</organization>
+			<organizationUrl>http://www.imixs.com</organizationUrl>
+			<roles>
+				<role>developer</role>
+				<role>testing</role>
+			</roles>
+			<timezone>2</timezone>
+		</developer>
+	</developers>
+
+	<licenses>
+		<license>
+			<name>Eclipse Public License - v 2.0</name>
+			<url>LICENSE</url>
+			<distribution>repo</distribution>
+			<comments>
+			This program and the accompanying materials are made available under the
+terms of the Eclipse Public License v. 2.0
+			</comments>
+		</license>
+	</licenses>
+	<url>https://github.com/imixs/open-bpmn</url>
+
+	<scm>
+		<connection>scm:git:git@github.com:imixs/open-bpmn.git</connection>
+		<developerConnection>scm:git:git@github.com:imixs/open-bpmn.git</developerConnection>
+		<url>https://github.com/imixs/open-bpmn/</url>
+		<tag>open-bpmn-1.0.4</tag>
+	</scm>
+	<issueManagement>
+		<system>GitHub</system>
+		<url>https://github.com/imixs/open-bpmn/issues</url>
+	</issueManagement>
+	<properties>
+	</properties>
+
+	<build>
+		<plugins>
+			<!-- release management -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-release-plugin</artifactId>
+				<version>3.0.1</version>
+				<configuration>
+					<autoVersionSubmodules>true</autoVersionSubmodules>
+					<useReleaseProfile>false</useReleaseProfile>
+					<releaseProfiles>release</releaseProfiles>
+					<goals>deploy</goals>
+				</configuration>
+			</plugin>
+			<!-- release to Maven central -->
+			<plugin>
+				<groupId>org.sonatype.plugins</groupId>
+				<artifactId>nexus-staging-maven-plugin</artifactId>
+				<version>1.6.13</version>
+				<extensions>true</extensions>
+				<configuration>
+					<serverId>ossrh</serverId>
+					<nexusUrl>https://oss.sonatype.org/</nexusUrl>
+					<autoReleaseAfterClose>true</autoReleaseAfterClose>
+					<stagingProgressTimeoutMinutes>15</stagingProgressTimeoutMinutes>
+				</configuration>
+			</plugin>
+
+			<!--  maven site, doc and reporting -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-site-plugin</artifactId>
+				<version>3.12.1</version>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-project-info-reports-plugin</artifactId>
+				<version>3.1.0</version>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>3.2.0</version>
+				<configuration>
+					<additionalOptions>-Xdoclint:none</additionalOptions>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jxr-plugin</artifactId>
+				<version>3.0.0</version>
+			</plugin>
+
+
+		</plugins>
+	</build>
+
+
+	<reporting>
+
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-project-info-reports-plugin</artifactId>
+				<version>3.4.0</version>
+				<reportSets>
+					<reportSet>
+						<configuration>
+							<!-- Just disable the generation of default files like index.html -->
+							<skip>true</skip>
+						</configuration>
+					</reportSet>
+				</reportSets>
+			</plugin>
+
+			<!-- java doc -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>3.2.0</version>
+				<configuration>
+					<additionalOptions>-Xdoclint:none</additionalOptions>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jxr-plugin</artifactId>
+				<version>3.0.0</version>
+			</plugin>
+		</plugins>
+
+	</reporting>
+
+	<profiles>
+		<!-- Activate using the release property -->
+		<profile>
+			<id>release</id>
+			<build>
+				<plugins>
+					<!-- To generate javadoc -->
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-source-plugin</artifactId>
+						<version>3.2.1</version>
+						<executions>
+							<execution>
+								<id>attach-sources</id>
+								<goals>
+									<goal>jar-no-fork</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-javadoc-plugin</artifactId>
+						<version>3.2.0</version>
+						<configuration>
+							<additionalOptions>-Xdoclint:none</additionalOptions>
+						</configuration>
+						<executions>
+							<execution>
+								<id>attach-javadocs</id>
+								<goals>
+									<goal>jar</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+
+					<!-- To sign the artifacts -->
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-gpg-plugin</artifactId>
+						<version>1.6</version>
+						<executions>
+							<execution>
+								<id>sign-artifacts</id>
+								<phase>verify</phase>
+								<goals>
+									<goal>sign</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+
+	<!-- Distributen Management oss.sonatype.org -->
+	<distributionManagement>
+		<snapshotRepository>
+			<id>ossrh</id>
+			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
+		</snapshotRepository>
+		<repository>
+			<id>ossrh</id>
+			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+		</repository>
+	</distributionManagement>
+
+</project>

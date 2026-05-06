@@ -1,0 +1,120 @@
+#!/bin/bash
+
+############################################################
+# The Imixs Developer Script
+# start, build, deploy
+# 
+############################################################
+
+# Helper function to remove the '-' char from a param
+strip_dash() {
+    echo "$1" | sed 's/^-//'
+}
+
+    echo "     _            _   _          _  "     
+    echo "  __| | _____   _(_) | |__   ___| |_ __"  
+    echo " / _\` |/ _ \\ \\ / / | | '_ \\ / _ \\ | \'_ \\" 
+    echo "| (_| |  __/\ V /| | | | | |  __/ | |_) |"
+    echo " \__,_|\___| \_/ |_| |_| |_|\___|_| .__/ "
+    echo "                                  |_|  "
+    echo "    Imixs Developer Script..."
+    echo "_________________________________________"
+
+# now verify params...
+
+
+if [[ "$(strip_dash $1)" == "start-all" ]]; then
+    echo " starting frontend and server..."
+    cd open-bpmn.glsp-client/
+    yarn start --root-dir=./open-bpmn.glsp-client/workspace
+    cd ..
+fi
+
+if [[ "$(strip_dash $1)" == "start-frontend" ]]; then
+    echo " starting frontend only..."
+    cd open-bpmn.glsp-client/
+    yarn start:external --root-dir=./open-bpmn.glsp-client/workspace
+    cd ..
+fi
+
+
+
+
+if [[ "$(strip_dash $1)" == "build-all" ]]; then
+    echo " starting maven build..."
+    mvn clean install -DskipTests
+    echo " install frontend..."
+    cd open-bpmn.glsp-client/
+    yarn install --ignore-engines
+    cd ..        
+fi
+
+if [[ "$(strip_dash $1)" == "build-server" ]]; then
+    echo " starting maven build..."
+    mvn clean install
+fi
+
+if [[ "$(strip_dash $1)" == "build-frontend" ]]; then
+    echo " install frontend..."
+    cd open-bpmn.glsp-client/
+    yarn install --ignore-engines
+    cd ..
+fi
+
+
+
+if [[ "$(strip_dash $1)" == "hot" ]]; then
+    echo " starting hot deployment mode for frontend..."
+    cd open-bpmn.glsp-client/
+    yarn watch
+    cd ..
+fi
+
+
+
+if [[ "$(strip_dash $1)" == "docker-build" ]]; then
+    echo " building docker image..."
+    mvn clean install -DskipTests
+    docker build . -t imixs/open-bpmn
+fi
+
+if [[ "$(strip_dash $1)" == "docker-run" ]]; then
+    echo " start docker container..."
+    docker run -it --rm --name="open-bpmn" -p 3000:3000 imixs/open-bpmn
+fi
+
+if [[ "$(strip_dash $1)" == "docker-push" ]]; then
+    echo " building docker image..."
+    mvn clean install -DskipTests
+    docker build . -t imixs/open-bpmn
+    docker push imixs/open-bpmn
+fi
+
+
+if [[ "$(strip_dash $1)" == "clean" ]]; then
+    echo " cleanup build..."
+    # clean up gitignore files
+    git clean -xdf
+    #mvn clean
+    rm open-bpmn.glsp-client/yarn.lock
+fi
+
+# Überprüfen, ob keine Parameter übergeben wurden - standard build
+if [[ $# -eq 0 ]]; then
+
+    echo " Run with ./dev.sh -XXX"
+    echo " "
+    echo "   -build-all      : build the backend and frontend component"
+    echo "   -build-server   : run a maven java build "
+    echo "   -build-frontend : install the frontend components "
+    echo "   -start-all      : start the frontend & server"
+    echo "   -start-frontend : start the frontend only without a server"
+    echo "   -hot            : start hot deployment mode for frontend components "
+    echo "   -clean          : clean up build "
+    echo "   -docker-build   : build docker image only"
+    echo "   -docker-run     : run the docker container "
+    echo "   -docker-push    : build and push the docker image "
+    echo "_______________________________________________________________________"
+    echo " "
+
+fi

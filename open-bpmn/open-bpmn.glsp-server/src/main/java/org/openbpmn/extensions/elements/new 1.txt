@@ -1,0 +1,74 @@
+
+
+CWP_BPMNTaskExtension extends AbstractBPMNElementExtension
+
+public abstract class AbstractBPMNElementExtension implements BPMNElementExtension
+
+AbstractBPMNElementExtension
+@Inject
+    protected BPMNGModelState modelState;
+	
+	getLabel()
+	addExtension
+	
+	public String getNamespace() {
+        return BPMNNS.BPMN2.name();
+    }
+	
+	public String getNamespaceURI() {
+        return "http://www.omg.org/spec/BPMN/20100524/MODEL";
+    }
+	
+	public void updateNameProperty(final JsonObject json, BPMNElement bpmnElement,
+            final GModelElement gNodeElement) {
+			
+	 public Set<Element> synchronizeEventDefinitions(final String definitionName, final Event bpmnEvent,
+            final JsonArray dataList) {
+	
+	public Map<String, String> getMultilineOption() {
+	
+	public Map<String, String> getFileEditorOption() {
+	-----------------
+	public interface BPMNElementExtension {
+	String getNamespace();
+	String getNamespaceURI();
+	String getLabel();
+	default String getInfo(final BPMNElement bpmnElement)
+	default String getSymbol(final BPMNElement bpmnElement)
+	boolean handlesElementTypeId(String elementTypeId)
+	boolean handlesBPMNElement(final BPMNElement bpmnElement)
+	default int getPriority()
+	void addExtension(BPMNElement bpmnElement);
+	void buildPropertiesForm(BPMNElement bpmnElement, DataBuilder dataBuilder, SchemaBuilder schemaBuilder,
+            UISchemaBuilder uiSchemaBuilder);
+	boolean updatePropertiesData(JsonObject json, String category, BPMNElement bpmnElement, GModelElement gNodeElement);
+	default List<BPMNValidationMarker> validate(BPMNElement bpmnElement)
+--------------
+DefaultBPMNTaskExtension extends AbstractBPMNElementExtension (cwp extension based on this)
+
+no @inject
+
+@Override
+    public boolean updatePropertiesData(final JsonObject json, final String category, final BPMNElement bpmnElement,
+            final GModelElement gNodeElement) {
+	
+	@Override
+    public boolean handlesElementTypeId(final String elementTypeId) {
+        return BPMNTypes.BPMN_TASKS.contains(elementTypeId);
+    }
+	
+	@Override
+    public boolean handlesBPMNElement(final BPMNElement bpmnElement) {
+        return (bpmnElement instanceof Activity);
+    }
+	
+	@Override
+    public void buildPropertiesForm(final BPMNElement bpmnElement, final DataBuilder dataBuilder,
+            final SchemaBuilder schemaBuilder, final UISchemaBuilder uiSchemaBuilder)
+			
+	@Override
+    public boolean updatePropertiesData(final JsonObject json, final String category, final BPMNElement bpmnElement,
+            final GModelElement gNodeElement)
+		sets attribute names / values for an element
+		
+		

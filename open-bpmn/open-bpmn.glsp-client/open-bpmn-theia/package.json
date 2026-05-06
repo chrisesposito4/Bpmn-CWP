@@ -1,0 +1,46 @@
+{
+  "name": "@open-bpmn/open-bpmn-theia",
+  "version": "1.2.7",
+  "description": "Theia extension for the BPMN GLSP Client",
+  "keywords": [
+    "theia-extension"
+  ],
+  "homepage": "https://www.imixs.org/",
+  "bugs": "https://github.com/imixs/open-bpmn/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/imixs/open-bpmn.git"
+  },
+  "license": "(GPL-3.0)",
+  "author": {
+    "name": "Imixs Workflow"
+  },
+  "contributors": [
+    {
+      "name": "Ralph Soika",
+      "email": "ralph.soika@imixs.com"
+    }
+  ],
+  "files": [
+    "lib",
+    "src"
+  ],
+  "dependencies": {
+    "@open-bpmn/open-bpmn-glsp": "1.2.7",
+    "@eclipse-glsp/theia-integration": "2.4.0"
+  },
+  "scripts": {
+    "build": "tsc -b",
+    "clean": "rimraf lib tsconfig.tsbuildinfo",
+    "lint": "eslint --ext .ts,.tsx ./src",
+    "lint:ci": "yarn lint -o eslint.xml -f checkstyle",
+    "prepare": "yarn clean && yarn build",
+    "watch": "tsc -w"
+  },
+  "theiaExtensions": [
+    {
+      "frontend": "lib/browser/bpmn-frontend-module",
+      "backend": "lib/node/bpmn-backend-module"
+    }
+  ]
+}

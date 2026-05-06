@@ -10,7 +10,7 @@ This is a customized / extended version of the open bpmn server. The extensions 
 
 Usage
 -----
-4) These 3 new fields are in their own UI sub-panel for object properties. To get to this panel, double-left-click on the task in question. Te object properties UI appears in the center bottom, with 2 sub-panels on the left side. The top is 'General'; the bottom is 'Verify_CWP'. Click on the top to set the task name and documentation. Click on the bottom to set any of the above 3 fields.
+4) These 3 new fields are in their own UI sub-panel for object properties. To get to this panel, double-left-click on the task in question. The object properties UI appears in the center bottom, with 2 sub-panels on the left side. The top is 'General'; the bottom is 'Verify_CWP'. Click on the top to set the task name and documentation. Click on the bottom to set any of the above 3 fields.
 
 Build 
 -----
@@ -18,5 +18,10 @@ The top-level Maven project manages the builds of the 2 sub-projects - the Java 
 
 Deploy
 ------
-This renamed jar file replaces the existing one of the same name in the 'server' subdirectory of the open-bpmn vscode extension directory. on Windows, this extension directory is in C:\Users\{your_user_id}\.vscode\extensions\open-bpmn.open-bpmn-vscode-extension-{version_#}\server.
+The above renamed jar file replaces the existing one of the same name in the 'server' subdirectory of the open-bpmn vscode extension directory. On Windows, this extension directory is in 
+C:\Users\{your_user_id}\.vscode\extensions\open-bpmn.open-bpmn-vscode-extension-{version_#}\server .
+
+Make a copy of the existing jar file in case of a problem, then delete it and copy the new renamed jar file in it's place. VS Code should start the server as before, and the graphical view of the BPMN network should appear as normal.
+
+
 

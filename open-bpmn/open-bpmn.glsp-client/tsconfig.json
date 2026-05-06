@@ -1,0 +1,13 @@
+{
+  "extends": "@eclipse-glsp/ts-config/tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": "."
+  },
+  "include": [
+	"open-bpmn-model/src",
+	"open-bpmn-glsp/src", 
+	"open-bpmn-properties/src",
+	"open-bpmn-theia/src", 
+	"open-bpmn-app"
+   ]
+}

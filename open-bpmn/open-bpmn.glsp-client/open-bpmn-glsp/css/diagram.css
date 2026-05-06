@@ -1,0 +1,286 @@
+/********************************************************************************
+ * Copyright (c) 2019-2022 EclipseSource and others.
+ *
+ * This program and the accompanying materials are made available under the
+ * terms of the Eclipse Public License v. 2.0 which is available at
+ * http://www.eclipse.org/legal/epl-2.0.
+ *
+ * This Source Code may also be made available under the following Secondary
+ * Licenses when the conditions for such availability set forth in the Eclipse
+ * Public License v. 2.0 are satisfied: GNU General Public License, version 2
+ * with the GNU Classpath Exception which is available at
+ * https://www.gnu.org/software/classpath/license.html.
+ *
+ * SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+ ********************************************************************************/
+
+.tool-palette .palette-body .group-header {
+    background: var(--theia-editorHoverWidget-statusBarBackground);
+}
+
+.bpmn-grid-line {
+    stroke-width: 0.5;
+    stroke: var(--theia-titleBar-activeBackground);
+}
+
+.helper-line {
+    stroke: var(--theia-focusBorder);
+    stroke-width: 0.5;
+}
+
+.symbol path {
+    stroke-width: 0;
+    fill: #f0f3f8;
+}
+
+.symbol .symbol-background {
+    fill: transparent;
+}
+
+/* BPMN Elements */
+.task>.sprotty-node {
+
+
+    fill: #84a1bd;
+    stroke-width: 1px;
+    stroke: var(--theia-foreground);
+}
+
+.event.startEvent>circle {
+    fill: #57A14C;
+}
+
+.event.endEvent>circle {
+    fill: #BE5961;
+    stroke-width: 3px;
+    stroke: #922828;
+}
+
+.event.intermediateCatchEvent>circle {
+    fill: #b6c7d9;
+    stroke: var(--theia-foreground);
+}
+
+.event.intermediateThrowEvent>circle {
+    fill: #b6c7d9;
+    stroke: var(--theia-foreground);
+}
+
+.event.boundaryEvent>circle {
+    fill: #627ea5;
+    opacity: 80%;
+    stroke-width: 1;
+    stroke: #354152a8
+}
+
+.gateway>polygon {
+    fill: #C39D5C;
+}
+
+.dataObject>.sprotty-node {
+    fill: transparent;
+}
+.dataObject>.sprotty-icon>path {
+    stroke-width: 1.5px;
+    fill: var(--theia-titleBar-activeBackground);
+}
+.dataObject>.sprotty-icon {
+    stroke-width: 2;
+}
+
+.dataObject .symbol path {
+    stroke-width: 0;
+    fill: var(--theia-foreground);
+}
+
+
+.dataStoreReference>.sprotty-node {
+    fill: transparent;
+}
+.dataStoreReference>.sprotty-icon {
+    stroke-width: 2;
+}
+
+.message>.sprotty-node {
+    opacity: 80%;
+    stroke: var(--theia-focusBorder);
+    outline-color: var(--theia-editor-foreground);
+    outline-style: solid;
+    outline-width: 2px;
+    fill: #6083a6;
+}
+
+.message>polyline {
+    stroke: var(--theia-editor-foreground);
+    stroke-width: 2;
+    fill: none;
+}
+
+.textAnnotation>.sprotty-node {
+    opacity: 20%;
+    fill: #82848a;
+}
+
+.textAnnotation>polyline {
+    stroke: #57A14C;
+    stroke-width: 2;
+    fill: none;
+}
+
+.textAnnotation .bpmn-text-node text {
+    fill: #447c3c;
+    text-anchor: start;
+    white-space: pre;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.task .bpmn-text-node text {
+    fill: #f5f9ff;
+    text-anchor: middle;
+}
+
+.task .extension text {
+    fill: #f5f9ff;
+    font-size: 7pt;
+    text-anchor: start;
+}
+
+.task .symbol path {
+    stroke-width: 0;
+    fill: #f5f9ff;
+}
+
+.BPMNLabel>.sprotty-node {
+    fill: transparent;
+}
+
+.BPMNLabel>.sprotty-label.heading {
+    fill: var(--theia-titleBar-activeForeground);
+}
+
+.BPMNLabel>.sprotty-node.mouseover {
+    fill: var(--theia-sideBar-background);
+}
+
+.BPMNLabel .bpmn-text-node text {
+    fill: var(--theia-titleBar-activeForeground);
+    text-anchor: middle;
+}
+
+.label-edit textarea {
+    font-size: 1em !important;
+    text-align: center;
+    margin: 1px;
+}
+
+/*** Pool and Lanes **/
+.pool>.sprotty-node {
+    fill: var(--theia-sideBar-background);
+    pointer-events: none;
+    fill-opacity: 70%;
+    stroke: var(--theia-focusBorder);
+    stroke-width: 2;
+}
+
+.pool>.sprotty-node.mouseover {
+    stroke: var(--theia-focusBorder);
+    opacity: 100%;
+}
+
+.pool>.pool_header {
+    fill: var(--theia-titleBar-activeBackground);
+    stroke: var(--theia-focusBorder);
+    stroke-width: 2;
+}
+
+.pool>.pool_header:hover,
+.lane>.lane_header:hover {
+    opacity: 70%;
+}
+
+.pool .pool_header text {
+    font-weight: normal;
+    font-size: 0.7em;
+    fill: var(--theia-titleBar-activeForeground);
+}
+
+.lane>.lane_header {
+    fill: var(--theia-titleBar-activeBackground);
+}
+
+.lane .lane_header text {
+    font-weight: normal;
+    font-size: 0.7em;
+    fill: var(--theia-titleBar-activeForeground);
+}
+
+.lane>.sprotty-node {
+    fill: none;
+}
+
+.lane-divider {
+    cursor: row-resize;
+}
+
+.lane-divider>polyline {
+    stroke: var(--theia-focusBorder);
+    stroke-width: 2;
+    fill: none;
+}
+
+.lane-divider rect {
+    fill: transparent;
+}
+
+.sequenceFlow .default-symbol {
+    stroke-width: 3;
+}
+
+/* BPMN Edges */
+.bpmnedge>.sprotty-label {
+    fill: var(--theia-titleBar-activeForeground);
+    text-align: center;
+}
+
+.sprotty-edge.messageFlow .line {
+    stroke-dasharray: 6, 4;
+}
+
+.sprotty-edge.association .line {
+    stroke-dasharray: 4, 4;
+}
+
+.sprotty-comp {
+    stroke: transparent;
+    fill: transparent;
+}
+
+
+/* Extension Imixs-Workflow (draft) */
+.intermediateCatchEvent.bpmnextension-imixs>circle {
+    fill: #6f8dab;
+    stroke-width: 2px;
+    stroke: #d48729;
+}
+
+.intermediateCatchEvent.bpmnextension-imixs .symbol path {
+    stroke-width: 0;
+    fill: #f0f3f8;
+}
+
+.task.bpmnextension-imixs>.sprotty-node {
+    fill: #425C81;
+    stroke-width: 2px;
+    stroke: #d48729;
+}
+
+.task.bpmnextension-imixs .bpmn-text-node text {
+    fill: #f0f3f8;
+    text-anchor: middle;
+}
+
+.task.bpmnextension-imixs .extension text {
+    fill: #f0f3f8;
+    font-size: 7pt;
+    text-anchor: start;
+}
