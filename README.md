@@ -16,7 +16,7 @@ Usage
 
 Build 
 -----
-The .jar file in 'current-distribution' is only for Version 1.2.7 of the open BPMN VS Code extension; the new 1.2.9 version needs a new jar file built from source with the changes listed below.
+The .jar file in 'current-distribution' is only for Version 1.1.27 of the open BPMN VS Code extension; the new 1.1.29 version needs a new jar file built from source with the changes listed below.
 
 New:
 CWP_VerifyServerLauncher (the source for a diff to apply to the original BPMN_ServerLauncher; about 4-5 lines)
@@ -37,7 +37,7 @@ modified:
 
 There's a unit test file in   Bpmn-CWP\open-bpmn\open-bpmn.glsp-server\src\test\java\org\openbpmn\glsp\utils that handles some 'empty filename' tests which fail on windows for some reason. I've removed them.
 
-The top-level Maven project manages the builds of the 2 sub-projects - the Java BPMN metamodel and the Java server-side component (the client component is what you see in VS Code). Any Java IDE that supports Maven should be able to build it. The output jar file goes in the 'target' subdirectory of the server sub-project. The generated jar file name currently looks like this: open-bpmn.server-1.2.7-SNAPSHOT-glsp.jar, where 1.2.7 is a build version.  This file name *must* be changed to imixs-open-bpmn.server-1.2.2-SNAPSHOT-glsp.jar in order for it to work as a server-side update to an installed VS Code open bpmn extension.  
+The top-level Maven project manages the builds of the 2 sub-projects - the Java BPMN metamodel and the Java server-side component (the client component is what you see in VS Code). Any Java IDE that supports Maven should be able to build it. The output jar file goes in the 'target' subdirectory of the server sub-project. The generated jar file name currently looks like this: open-bpmn.server-1.2.7-SNAPSHOT-glsp.jar, where 1.2.7 is a build version.  This file name *must* be changed to imixs-open-bpmn.server-1.2.1-SNAPSHOT-glsp.jar in order for it to work as a server-side update to an installed VS Code open bpmn extension.  
 
 Deploy
 ------
